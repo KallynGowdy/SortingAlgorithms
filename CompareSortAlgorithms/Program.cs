@@ -44,10 +44,10 @@ namespace BubbleSort
         {
             Tuple<string, long[]>[] times = algorithms.Select(a => new Tuple<string, long[]>(a.Item1, TestAlgorithm(a.Item1, a.Item2, false))).ToArray();
 
-            Console.WriteLine("Round X | " + String.Join(" | ", times.Select(a => a.Item1)));
+            Console.WriteLine("Round X | {0, 10} | " + String.Join(" | ", times.Select(a => a.Item1)), "Count");
             for (int i = 0; i < Rounds; i++)
             {
-                Console.Write("Round {0} | {1} | ", i);
+                Console.Write("Round {0} | {1, 10} | ", i, (StartingAmountOfNumbers * Math.Pow(Factor, i)));
                 for (int c = 0; c < times.Length; c++)
                 {
                     string labelFormat = string.Format("{{0, {0}}}ms | ", times[c].Item1.Length - 2);

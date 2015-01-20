@@ -26,12 +26,15 @@ namespace BubbleSort
         /// <summary>
         /// The number of rounds to run.
         /// </summary>
-        public const int Rounds = 7;
+        public const int Rounds = 5;
 
         static void Main(string[] args)
         {
-
-            TestAlgorithm("LINQ's OrderBy", numbers => numbers.OrderBy(n => n).ToArray());
+            CompareAlgorithms(new[]
+            {
+                new Tuple<string, Func<int[], int[]>>("Bubble Sort /W Swap", BubbleSortImplementation.BubbleSortWithSwapFlag),
+                new Tuple<string, Func<int[], int[]>>("Bubble Sort /WO Swap", BubbleSortImplementation.BubbleSortWithoutSwap)                
+            });
 
             Console.WriteLine("Press Any Key To Quit...");
             Console.Read();
@@ -39,21 +42,22 @@ namespace BubbleSort
 
         static void CompareAlgorithms(params Tuple<string, Func<int[], int[]>>[] algorithms)
         {
-            Tuple<string, long[]>[] times = algorithms.Select(a => new Tuple<string, long[]>(a.Item1, TestAlgorithm(a.Item1, a.Item2))).ToArray();
+            Tuple<string, long[]>[] times = algorithms.Select(a => new Tuple<string, long[]>(a.Item1, TestAlgorithm(a.Item1, a.Item2, false))).ToArray();
 
+            Console.WriteLine("Round X | " + String.Join(" | ", times.Select(a => a.Item1)));
             for (int i = 0; i < Rounds; i++)
             {
-                Console.WriteLine("Round {0}| " + String.Join("|", times.Select(a => a.Item1)));
-
+                Console.Write("Round {0} | {1} | ", i);
                 for (int c = 0; c < times.Length; c++)
                 {
-
-
+                    string labelFormat = string.Format("{{0, {0}}}ms | ", times[c].Item1.Length - 2);
+                    Console.Write(labelFormat, times[c].Item2[i]);
                 }
+                Console.WriteLine();
             }
         }
 
-        static long[] TestAlgorithm(string name, Func<int[], int[]> sortAlgorithm)
+        static long[] TestAlgorithm(string name, Func<int[], int[]> sortAlgorithm, bool printProgress = true)
         {
             int currentAmount = StartingAmountOfNumbers;
             long[] linqTimes = new long[Rounds];
@@ -72,9 +76,11 @@ namespace BubbleSort
                 Stopwatch linqWatch = Stopwatch.StartNew();
                 int[] linqOrderedNumbers = sortAlgorithm(numbers);
                 linqWatch.Stop();
-
-                Console.WriteLine("{0} took {1}ms to sort {2} random numbers.", name, linqWatch.ElapsedMilliseconds, currentAmount);
-                Console.WriteLine();
+                if (printProgress)
+                {
+                    Console.WriteLine("{0} took {1}ms to sort {2} random numbers.", name, linqWatch.ElapsedMilliseconds, currentAmount);
+                    Console.WriteLine();
+                }
 
                 linqTimes[c] = linqWatch.ElapsedMilliseconds;
 

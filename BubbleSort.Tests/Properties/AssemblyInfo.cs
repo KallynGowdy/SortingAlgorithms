@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("BubbleSort")]
+[assembly: AssemblyTitle("BubbleSort.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("BubbleSort")]
+[assembly: AssemblyProduct("BubbleSort.Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("cba4923b-87ba-4ce0-858a-4d6880e1ae7e")]
+[assembly: Guid("4c3f3914-08ad-4bd7-adb2-27f0289fa6b8")]
 
 // Version information for an assembly consists of the following four values:
 //

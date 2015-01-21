@@ -1,9 +1,8 @@
-
 ## Kallyn Gowdy, Bubble Sort, 2015
 
 
 ```
-#!c#
+#!javascript
 
 // 1. Get the array (This may or may not be already sorted, but it is probably unsorted)
 var unsortedArray = [...]

@@ -1,8 +1,11 @@
 ## Kallyn Gowdy, Bubble Sort, 2015
 
 
+
 ```
 #!javascript
+
+
 
 // 1. Get the array (This may or may not be already sorted, but it is probably unsorted)
 var unsortedArray = [...]
@@ -42,4 +45,5 @@ do {
 } while(haveTwoValuesBeenSwapped)
 
 // 9. Enjoy your sorted array (output is sorted)
+
 ```

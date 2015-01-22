@@ -28,7 +28,8 @@ namespace BubbleSort
             int[] output = new int[numbers.Length];
             numbers.CopyTo(output, 0);
             bool swappedValue = false;
-            do {
+            do
+            {
                 swappedValue = false;
                 for (int i = 0; i < output.Length - 1; i++)
                 {
@@ -38,11 +39,10 @@ namespace BubbleSort
                     {
                         output[i] = second;
                         output[i + 1] = first;
-                        i--;
                         swappedValue = true;
                     }
                 }
-            } while(swappedValue);
+            } while (swappedValue);
 
             return output;
         }
@@ -73,13 +73,12 @@ namespace BubbleSort
                     {
                         output[c] = second;
                         output[c + 1] = first;
-                        c--;
                     }
                 }
             }
 
             return output;
         }
-        
+
     }
 }

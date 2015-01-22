@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BubbleSort.Tests", "BubbleS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestHelpers", "TestHelpers\TestHelpers.csproj", "{74843A1D-8D7A-4D07-9EC9-58B99EFB1AF2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelectionSort", "SelectionSort\SelectionSort.csproj", "{14D18D09-3B7F-4C09-9073-92A3292A599C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelectionSortTests", "SelectionSortTests\SelectionSortTests.csproj", "{F56F2907-AB90-4A8C-BB83-D609E1D7D099}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{74843A1D-8D7A-4D07-9EC9-58B99EFB1AF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74843A1D-8D7A-4D07-9EC9-58B99EFB1AF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74843A1D-8D7A-4D07-9EC9-58B99EFB1AF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14D18D09-3B7F-4C09-9073-92A3292A599C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14D18D09-3B7F-4C09-9073-92A3292A599C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14D18D09-3B7F-4C09-9073-92A3292A599C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14D18D09-3B7F-4C09-9073-92A3292A599C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F56F2907-AB90-4A8C-BB83-D609E1D7D099}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F56F2907-AB90-4A8C-BB83-D609E1D7D099}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F56F2907-AB90-4A8C-BB83-D609E1D7D099}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F56F2907-AB90-4A8C-BB83-D609E1D7D099}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -52,6 +52,10 @@
       <Project>{5b91973f-972b-4559-bf79-bae134697b86}</Project>
       <Name>BubbleSort</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SelectionSort\SelectionSort.csproj">
+      <Project>{14D18D09-3B7F-4C09-9073-92A3292A599C}</Project>
+      <Name>SelectionSort</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

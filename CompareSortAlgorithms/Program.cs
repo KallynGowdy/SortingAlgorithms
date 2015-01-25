@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SelectionSort;
 
 namespace BubbleSort
 {
@@ -26,14 +27,17 @@ namespace BubbleSort
         /// <summary>
         /// The number of rounds to run.
         /// </summary>
-        public const int Rounds = 5;
+        public const int Rounds = 4;
 
         static void Main(string[] args)
         {
             CompareAlgorithms(new[]
             {
                 new Tuple<string, Func<int[], int[]>>("Bubble Sort /W Swap", BubbleSortImplementation.BubbleSortWithSwapFlag),
-                new Tuple<string, Func<int[], int[]>>("Bubble Sort /WO Swap", BubbleSortImplementation.BubbleSortWithoutSwap)                
+                new Tuple<string, Func<int[], int[]>>("Bubble Sort /WO Swap", BubbleSortImplementation.BubbleSortWithoutSwap)    ,
+                new Tuple<string, Func<int[], int[]>>("Selection Sort /W Array", SelectionSortImplementation.SelectionSortWithoutList),            
+                new Tuple<string, Func<int[], int[]>>("Selection Sort /W List", SelectionSortImplementation.SelectionSortWithList),            
+                new Tuple<string, Func<int[], int[]>>("Selection Sort /W Swap", SelectionSortImplementation.SelectionSortBySwap),
             });
 
             Console.WriteLine("Press Any Key To Quit...");
@@ -42,7 +46,7 @@ namespace BubbleSort
 
         static void CompareAlgorithms(params Tuple<string, Func<int[], int[]>>[] algorithms)
         {
-            Tuple<string, long[]>[] times = algorithms.Select(a => new Tuple<string, long[]>(a.Item1, TestAlgorithm(a.Item1, a.Item2, false))).ToArray();
+            Tuple<string, long[]>[] times = algorithms.AsParallel().Select(a => new Tuple<string, long[]>(a.Item1, TestAlgorithm(a.Item1, a.Item2, false))).ToArray();
 
             Console.WriteLine("Round X | {0, 10} | " + String.Join(" | ", times.Select(a => a.Item1)), "Count");
             for (int i = 0; i < Rounds; i++)

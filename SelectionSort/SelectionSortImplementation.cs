@@ -17,22 +17,22 @@ namespace SelectionSort
         /// This method uses two arrays to sort the values. One array as the input and one as the output. The input array
         /// is copied from the given list of numbers and each element is nullable. 
         /// When a value is selected from the input array, the location at the input array is set to null so that we know to skip over
-        /// it. A better alternative might be to use a list for the input array. A difficulty with this algorithm is the requirement of
-        /// resizing the input array for it to work properly.
+        /// it. A much better alternative would be to sort the items in place by swapping the lowest number to the beginning of the unsorted items.
+        /// A difficulty with this algorithm is the requirement of resizing the input array for it to work properly.
         /// </summary>
         /// <param name="numbers">The list of numbers that should be sorted.</param>
         /// <returns>Returns a new list containing the sorted numbers.</returns>
         public static int[] SelectionSortWithoutList(int[] numbers)
         {
             if (numbers == null) throw new ArgumentNullException("numbers");
-            
+
             int?[] input = numbers.Select(n => (int?)n).ToArray();
             int[] output = new int[numbers.Length];
 
             for (int i = 0; i < input.Length; i++)
             {
                 int lowest = 0;
-                for(int c = 1; c < input.Length; c++)
+                for (int c = 1; c < input.Length; c++)
                 {
                     if (!input[c].HasValue) continue;
                     if (!input[lowest].HasValue || input[lowest] > input[c])
@@ -90,10 +90,32 @@ namespace SelectionSort
         /// <returns>Returns a new array containing the sorted numbers.</returns>
         public static int[] SelectionSortBySwap(int[] numbers)
         {
+            return SelectionSortBySwap(numbers, false);
+        }
+
+        /// <summary>
+        /// Sorts the given numbers using the Selection Sort algorithm and returns a list containing the sorted numbers.
+        /// 
+        /// This variant creates a new list if the 'createNewArray' parameter is true and swaps the selected item to the first (second, third, ect..). 
+        /// This avoids creating two different data structures, which benefits performance greatly.
+        /// </summary>
+        /// <param name="numbers">The numbers that should be sorted.</param>
+        /// <param name="createNewArray">Whether a new array should be created for the output or if the given input array should be manipulated instead.</param>
+        /// <returns>Returns list containing the sorted numbers.</returns>
+        public static int[] SelectionSortBySwap(int[] numbers, bool createNewArray)
+        {
             if (numbers == null) throw new ArgumentNullException("numbers");
 
-            int[] output = new int[numbers.Length];
-            numbers.CopyTo(output, 0);
+            int[] output;
+            if (createNewArray)
+            {
+                output = new int[numbers.Length];
+                output = numbers.ToArray();
+            }
+            else
+            {
+                output = numbers;
+            }
 
             for (int i = 0; i < output.Length; i++)
             {

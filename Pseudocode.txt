@@ -39,3 +39,41 @@ do {
 } while(haveTwoValuesBeenSwapped)
 
 // 9. Enjoy your sorted array (output is sorted)
+
+
+// ------------------------------------------------------------------------------------------------------------ //
+
+
+// Kallyn Gowdy, Selection Sort, 2015
+
+// 1. Get the array
+var unsortedArray = [...]
+
+// 2. Create output array
+var output = copy(unsortedArray)
+
+// 3. Loop for how many elements there are in the array
+for(var i = 0;
+	i < output.length;
+	i++){
+	
+	var lowest = i // 4. Create a variable that stores the index of the lowest value
+	
+	// 5. Loop again, but start at i + 1. This loop is to find the lowest value
+	for(var c = i + 1;
+		c < output.length;
+		c++){
+		if(output[c] < output[lowest]) {
+			lowest = c // 6. Set the lowest value
+		}
+	}
+	
+	// 7. Swap
+	swap(lowest).with(output[i])
+	
+}
+
+// 8. Enjoy your sorted array
+
+
+

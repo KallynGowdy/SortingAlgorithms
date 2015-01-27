@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SelectionSort;
+using KalsTimer;
 
 namespace BubbleSort
 {
@@ -27,26 +28,34 @@ namespace BubbleSort
         /// <summary>
         /// The number of rounds to run.
         /// </summary>
-        public const int Rounds = 4;
+        public const int Rounds = 5;
 
         static void Main(string[] args)
         {
-            CompareAlgorithms(new[]
+            var algorithms = new[]
             {
-                new Tuple<string, Func<int[], int[]>>("Bubble Sort /W Swap", BubbleSortImplementation.BubbleSortWithSwapFlag),
-                new Tuple<string, Func<int[], int[]>>("Bubble Sort /WO Swap", BubbleSortImplementation.BubbleSortWithoutSwap)    ,
-                new Tuple<string, Func<int[], int[]>>("Selection Sort /W Array", SelectionSortImplementation.SelectionSortWithoutList),            
-                new Tuple<string, Func<int[], int[]>>("Selection Sort /W List", SelectionSortImplementation.SelectionSortWithList),            
+                new Tuple<string, Func<int[], int[]>>("Bubble Sort /W Swap", BubbleSortImplementation.BubbleSortWithSwapFlag),           
                 new Tuple<string, Func<int[], int[]>>("Selection Sort /W Swap", SelectionSortImplementation.SelectionSortBySwap),
-            });
+            };
+
+            Console.WriteLine("Kals timer: ");
+
+            CompareAlgorithms<KalTimer>(algorithms);
+
+            Console.WriteLine();
+
+            Console.WriteLine("System timer: ");
+
+            CompareAlgorithms<SystemTimer>(algorithms);
 
             Console.WriteLine("Press Any Key To Quit...");
             Console.Read();
         }
 
-        static void CompareAlgorithms(params Tuple<string, Func<int[], int[]>>[] algorithms)
+        static void CompareAlgorithms<T>(params Tuple<string, Func<int[], int[]>>[] algorithms)
+            where T : ITimer, new()
         {
-            Tuple<string, long[]>[] times = algorithms.AsParallel().Select(a => new Tuple<string, long[]>(a.Item1, TestAlgorithm(a.Item1, a.Item2, false))).ToArray();
+            Tuple<string, long[]>[] times = algorithms.Select(a => new Tuple<string, long[]>(a.Item1, TestAlgorithm<T>(a.Item1, a.Item2, false))).ToArray();
 
             Console.WriteLine("Round X | {0, 10} | " + String.Join(" | ", times.Select(a => a.Item1)), "Count");
             for (int i = 0; i < Rounds; i++)
@@ -61,7 +70,8 @@ namespace BubbleSort
             }
         }
 
-        static long[] TestAlgorithm(string name, Func<int[], int[]> sortAlgorithm, bool printProgress = true)
+        static long[] TestAlgorithm<T>(string name, Func<int[], int[]> sortAlgorithm, bool printProgress = true)
+            where T : ITimer, new()
         {
             int currentAmount = StartingAmountOfNumbers;
             long[] linqTimes = new long[Rounds];
@@ -77,16 +87,17 @@ namespace BubbleSort
                     numbers[i] = r.Next(int.MinValue, int.MaxValue);
                 }
 
-                Stopwatch linqWatch = Stopwatch.StartNew();
+                T linqWatch = new T();
+                linqWatch.Start();
                 int[] linqOrderedNumbers = sortAlgorithm(numbers);
                 linqWatch.Stop();
                 if (printProgress)
                 {
-                    Console.WriteLine("{0} took {1}ms to sort {2} random numbers.", name, linqWatch.ElapsedMilliseconds, currentAmount);
+                    Console.WriteLine("{0} took {1}ms to sort {2} random numbers.", name, linqWatch.TotalMiliseconds, currentAmount);
                     Console.WriteLine();
                 }
 
-                linqTimes[c] = linqWatch.ElapsedMilliseconds;
+                linqTimes[c] = (long)linqWatch.TotalMiliseconds;
 
                 currentAmount *= Factor;
             }

@@ -52,6 +52,14 @@
       <Project>{5b91973f-972b-4559-bf79-bae134697b86}</Project>
       <Name>BubbleSort</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CountingArray\CountingArray.csproj">
+      <Project>{71b232f1-2667-4965-9b18-67760d396a75}</Project>
+      <Name>CountingArray</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InsertionSort\InsertionSort.csproj">
+      <Project>{c8be9a6a-b0ec-45ec-b978-eeef9ff4c71a}</Project>
+      <Name>InsertionSort</Name>
+    </ProjectReference>
     <ProjectReference Include="..\KalsTimer\KalsTimer.csproj">
       <Project>{fc043dfa-f97c-4180-a413-7c035c8d0200}</Project>
       <Name>KalsTimer</Name>

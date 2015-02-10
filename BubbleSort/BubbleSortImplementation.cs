@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CountingArray;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -47,6 +48,28 @@ namespace BubbleSort
             return output;
         }
 
+        public static CountingArray<int> BubbleSortWithSwapFlag(CountingArray<int> numbers)
+        {
+            if (numbers == null) throw new ArgumentNullException("numbers");
+
+            bool swappedValue = false;
+            do
+            {
+                swappedValue = false;
+                for (int i = 0; i < numbers.Length - 1; i++)
+                {
+                    if (numbers.Compare(i, i + 1, (f, s) => f > s))
+                    {
+                        numbers.Swap(i, i + 1);
+                        swappedValue = true;
+                    }
+                }
+
+            } while (swappedValue);
+
+            return numbers;
+        }
+
         /// <summary>
         /// Sorts the given numbers using the bubble sort algorithm. Returns a new array containing the sorted elements.
         /// 
@@ -79,6 +102,7 @@ namespace BubbleSort
 
             return output;
         }
+
 
     }
 }

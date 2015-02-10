@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CountingArray;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -133,6 +134,36 @@ namespace SelectionSort
             }
 
             return output;
+        }
+
+        /// <summary>
+        /// Sorts the given numbers using the Selection Sort algorithm and returns a list containing the sorted numbers.
+        /// 
+        /// This variant creates a new list if the 'createNewArray' parameter is true and swaps the selected item to the first (second, third, ect..). 
+        /// This avoids creating two different data structures, which benefits performance greatly.
+        /// </summary>
+        /// <param name="numbers">The numbers that should be sorted.</param>
+        /// <param name="createNewArray">Whether a new array should be created for the output or if the given input array should be manipulated instead.</param>
+        /// <returns>Returns list containing the sorted numbers.</returns>
+        public static CountingArray<int> SelectionSortBySwap(CountingArray<int> numbers)
+        {
+            if (numbers == null) throw new ArgumentNullException("numbers");
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                int lowest = i;
+                for (int c = i + 1; c < numbers.Length; c++)
+                {
+                    if (numbers.Compare(lowest, c, (f,s) => f > s))
+                    {
+                        lowest = c;
+                    }
+                }
+
+                numbers.Swap(lowest, i);
+            }
+
+            return numbers;
         }
     }
 }

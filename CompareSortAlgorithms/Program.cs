@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SelectionSort;
 using KalsTimer;
+using MergeSort;
 
 namespace BubbleSort
 {
@@ -28,14 +29,14 @@ namespace BubbleSort
         /// <summary>
         /// The number of rounds to run.
         /// </summary>
-        public const int Rounds = 5;
+        public const int Rounds = 7;
 
         static void Main(string[] args)
         {
             var algorithms = new[]
             {
-                new Tuple<string, Func<int[], int[]>>("Bubble Sort /W Swap", BubbleSortImplementation.BubbleSortWithSwapFlag),           
-                new Tuple<string, Func<int[], int[]>>("Selection Sort /W Swap", SelectionSortImplementation.SelectionSortBySwap),
+                new Tuple<string, Func<int[], int[]>>("Merge Sort /W Recursion", MergeSortImplementation.SortUsingRecursion),           
+                new Tuple<string, Func<int[], int[]>>("Merge Sort /WO Recursion", MergeSortImplementation.SortUsingLoops),
             };
 
             Console.WriteLine("Kals timer: ");

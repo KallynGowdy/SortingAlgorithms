@@ -56,6 +56,10 @@
       <Project>{fc043dfa-f97c-4180-a413-7c035c8d0200}</Project>
       <Name>KalsTimer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MergeSort\MergeSort.csproj">
+      <Project>{e060c603-f008-4c6d-85e2-89022a4bad48}</Project>
+      <Name>MergeSort</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SelectionSort\SelectionSort.csproj">
       <Project>{14D18D09-3B7F-4C09-9073-92A3292A599C}</Project>
       <Name>SelectionSort</Name>

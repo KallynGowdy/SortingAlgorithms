@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using SelectionSort;
 using KalsTimer;
 using MergeSort;
+using InsertionSort;
 
 namespace BubbleSort
 {
@@ -29,14 +30,19 @@ namespace BubbleSort
         /// <summary>
         /// The number of rounds to run.
         /// </summary>
-        public const int Rounds = 7;
+        public const int Rounds = 6;
 
         static void Main(string[] args)
         {
             var algorithms = new[]
             {
-                new Tuple<string, Func<int[], int[]>>("Merge Sort /W Recursion", MergeSortImplementation.SortUsingRecursion),           
-                new Tuple<string, Func<int[], int[]>>("Merge Sort /WO Recursion", MergeSortImplementation.SortUsingLoops),
+                //new Tuple<string, Func<int[], int[]>>("Bubble Sort", BubbleSortImplementation.BubbleSortWithoutSwap),           
+                //new Tuple<string, Func<int[], int[]>>("Insertion Sort", InsertionSortImplementation.InsertionSortWithSwap),
+                //new Tuple<string, Func<int[], int[]>>("Selection Sort", SelectionSortImplementation.SelectionSortBySwap),
+                new Tuple<string, Func<int[], IEnumerable<int>>>("Merge Sort By Kal", MergeSortImplementation.SortUsingLoops),
+                new Tuple<string, Func<int[], IEnumerable<int>>>("Merge Sort /W Recursion", MergeSortImplementation.SortUsingRecursion),
+                new Tuple<string, Func<int[], IEnumerable<int>>>("Merge Sort By Book", MergeSortImplementation.SortUsingBookMethod),
+                new Tuple<string, Func<int[], IEnumerable<int>>>("OrderBy", n => n.OrderBy(v => v)),
             };
 
             Console.WriteLine("Kals timer: ");
@@ -53,7 +59,7 @@ namespace BubbleSort
             Console.Read();
         }
 
-        static void CompareAlgorithms<T>(params Tuple<string, Func<int[], int[]>>[] algorithms)
+        static void CompareAlgorithms<T>(params Tuple<string, Func<int[], IEnumerable<int>>>[] algorithms)
             where T : ITimer, new()
         {
             Tuple<string, long[]>[] times = algorithms.Select(a => new Tuple<string, long[]>(a.Item1, TestAlgorithm<T>(a.Item1, a.Item2, false))).ToArray();
@@ -71,7 +77,7 @@ namespace BubbleSort
             }
         }
 
-        static long[] TestAlgorithm<T>(string name, Func<int[], int[]> sortAlgorithm, bool printProgress = true)
+        static long[] TestAlgorithm<T>(string name, Func<int[], IEnumerable<int>> sortAlgorithm, bool printProgress = true)
             where T : ITimer, new()
         {
             int currentAmount = StartingAmountOfNumbers;
@@ -90,7 +96,7 @@ namespace BubbleSort
 
                 T linqWatch = new T();
                 linqWatch.Start();
-                int[] linqOrderedNumbers = sortAlgorithm(numbers);
+                IEnumerable<int> linqOrderedNumbers = sortAlgorithm(numbers).ToArray();
                 linqWatch.Stop();
                 if (printProgress)
                 {

@@ -79,6 +79,8 @@ namespace MergeSort
             return result;
         }
 
+
+
         /// <summary>
         /// Sorts the given list of numbers using for loops instead of recursion.
         /// 
@@ -96,6 +98,8 @@ namespace MergeSort
             // 3). Enqueue result back onto the stack
             // 4). Repeat steps 2 & 3 until there is only 1 list left
 
+            // 1). Split numbers into seperate lists using RangedArrays
+
             Queue<int[]> lists = new Queue<int[]>(numbers.Select(n => new[] { n }));
 
             while (lists.Count > 1)
@@ -106,5 +110,74 @@ namespace MergeSort
             return lists.Dequeue();
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="numbers"></param>
+        /// <returns></returns>
+
+        public static int[] SortUsingBookMethod(int[] numbers)
+        {
+            int[] temp = new int[numbers.Length];
+            numbers.CopyTo(temp, 0);
+            RecMergeSort(temp, numbers, 0, numbers.Length - 1);
+            return temp;
+        }
+
+        public static void RecMergeSort(int[] outputArray, int[] tempArray, int lbound, int ubound)
+        {
+            if (lbound == ubound)
+                return;
+            else
+            {
+                int mid = (int)(lbound + ubound) / 2;
+                RecMergeSort(outputArray, tempArray, lbound, mid);
+                RecMergeSort(outputArray, tempArray, mid + 1, ubound);
+                Merge(outputArray, tempArray, lbound, mid + 1, ubound);
+            }
+        }
+
+        public static void Merge(int[] outputArray, int[] tempArray, int lowp, int highp, int ubound)
+        {
+            int lbound = lowp;
+            int mid = highp - 1;
+            int j = 0;
+            int n = (ubound - lbound) + 1;
+
+            while ((lowp <= mid) && (highp <= ubound))
+            {
+                if (outputArray[lowp] < outputArray[highp])
+                {
+                    tempArray[j] = outputArray[lowp];
+
+                    j++;
+                    lowp++;
+                }
+                else
+                {
+                    tempArray[j] = outputArray[highp];
+                    j++;
+                    highp++;
+                }
+            }
+
+            while (lowp <= mid)
+            {
+                tempArray[j] = outputArray[lowp];
+                j++;
+                lowp++;
+            }
+
+            while (highp <= ubound)
+            {
+                outputArray[j] = outputArray[highp];
+                j++;
+                highp++;
+            }
+
+            for (j = 0; j <= n - 1; j++)
+                outputArray[lbound + j] = tempArray[j];
+        }
     }
 }

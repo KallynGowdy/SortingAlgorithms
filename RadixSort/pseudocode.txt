@@ -1,0 +1,37 @@
+
+// LSD Radix Sort
+
+var numbers = [...];
+
+// 1). Make a new array called 'output' and copy the numbers into it
+// 2). Make a variable called 'digit' to track the current digit that we are sorting by
+// 3). Do Steps 4-7 while 'hadDigit' is true
+// 4). Make a new array called 'currentNumbers' to store the numbers while we retrieve them
+// 5). Set 'hadDigit' to false
+// 6). Loop from 0 through 9 using the counting var 'c'
+// 		a). Loop through each of the 'currentNumbers' using var 'i'
+//			i). If the last digit of the number at index 'i' equals 'c' then put it into the 'output' array at 'i' and set 'hadDigit' to true
+			
+// 7). Increment 'digit'
+
+// Return output array
+
+var output = numbers.slice(); // Copy input to output array
+
+var digit = 0; // Keep track of our current digit that we're comparing
+var hadDigit = false; // 
+do {
+	var currentNumbers = output.slice();
+	hadDigit = false;
+	for(var c = 0; c < 10; c++){
+		for(var i = 0; i < currentNumbers.length; i++){
+			var n = currentNumbers[i];
+			var divisor = pow(10, digit); // Calculate the divisor for the number to isolate the last digit.
+			if((n / divisor) % 10 == c) { // If the remainder of n / 10 equals 'c', then we know the last digit matches
+				output[i] = n; // add to the next place in the array
+				hadDigit = true; // Set had digit to true
+			}
+		}
+	}
+	digit++; // Increase the digit place
+} while(hadDigit)

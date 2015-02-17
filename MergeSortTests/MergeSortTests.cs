@@ -10,13 +10,14 @@ namespace MergeSortTests
         [TestMethod]
         public void TestMergeSortWithRecursion()
         {
-            TestHelpers.TestHelpers.TestAlgorithm(MergeSortImplementation.SortUsingRecursion, 10000);
+            Assert.IsTrue(TestHelpers.TestHelpers.TestAlgorithm(MergeSortImplementation.SortUsingRecursion, 10000));
         }
 
         [TestMethod]
         public void TestMergeSortWithoutRecursion()
         {
-            TestHelpers.TestHelpers.TestAlgorithm(MergeSortImplementation.SortUsingLoops, 10000);
+            Assert.IsTrue(TestHelpers.TestHelpers.TestAlgorithm(MergeSortImplementation.SortUsingLoops, 10000));
         }
+
     }
 }

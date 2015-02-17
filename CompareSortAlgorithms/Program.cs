@@ -38,8 +38,7 @@ namespace BubbleSort
             var algorithms = new[]
             {
                 new Tuple<string, Func<CountingArray<int>, CountingArray<int>>>("Bubble Sort", BubbleSortImplementation.BubbleSortWithSwapFlag),
-                new Tuple<string, Func<CountingArray<int>, CountingArray<int>>>("Insertion Sort", InsertionSortImplementation.InsertionSortWithSwap),
-                new Tuple<string, Func<CountingArray<int>, CountingArray<int>>>("Selection Sort", SelectionSortImplementation.SelectionSortBySwap)
+                new Tuple<string, Func<CountingArray<int>, CountingArray<int>>>("Insertion Sort", InsertionSortImplementation.InsertionSortWithSwap)
             };
 
             Console.WriteLine("Transaction Counter: ");

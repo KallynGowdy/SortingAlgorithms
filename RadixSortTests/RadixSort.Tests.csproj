@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{724D2B8F-5FF1-4F51-8F14-B769CA3BD81F}</ProjectGuid>
+    <ProjectGuid>{1DDD643B-07EF-49F8-BB1C-C444DD437AF9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>InsertionSort.Test</RootNamespace>
-    <AssemblyName>InsertionSort.Test</AssemblyName>
+    <RootNamespace>RadixSortTests</RootNamespace>
+    <AssemblyName>RadixSortTests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -50,7 +50,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="InsertionSortTests.cs" />
+    <Compile Include="RadixSortTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -58,9 +58,9 @@
       <Project>{71b232f1-2667-4965-9b18-67760d396a75}</Project>
       <Name>CountingArray</Name>
     </ProjectReference>
-    <ProjectReference Include="..\InsertionSort\InsertionSort.csproj">
-      <Project>{c8be9a6a-b0ec-45ec-b978-eeef9ff4c71a}</Project>
-      <Name>InsertionSort</Name>
+    <ProjectReference Include="..\RadixSort\RadixSort.csproj">
+      <Project>{3a2d97ad-cc57-4ec2-b98b-406805c1f038}</Project>
+      <Name>RadixSort</Name>
     </ProjectReference>
     <ProjectReference Include="..\TestHelpers\TestHelpers.csproj">
       <Project>{74843a1d-8d7a-4d07-9ec9-58b99efb1af2}</Project>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CountingArray;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,6 +42,23 @@ namespace InsertionSort
             }
 
             return output;
+        }
+
+        public static CountingArray<int> InsertionSortWithSwap(CountingArray<int> numbers)
+        {
+            if (numbers == null) throw new ArgumentNullException("numbers");
+
+            for (int i = 1; i < numbers.Length; i++)
+            {
+                int index = i;
+                while (index > 0 && numbers.Compare(index, index-1, (f,s) => f < s))
+                {
+                    numbers.Swap(index, index - 1);
+                    index--;
+                }
+            }
+
+            return numbers;
         }
 
     }

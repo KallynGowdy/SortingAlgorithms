@@ -54,6 +54,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CountingArray\CountingArray.csproj">
+      <Project>{71b232f1-2667-4965-9b18-67760d396a75}</Project>
+      <Name>CountingArray</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SelectionSort\SelectionSort.csproj">
       <Project>{14d18d09-3b7f-4c09-9073-92a3292a599c}</Project>
       <Name>SelectionSort</Name>

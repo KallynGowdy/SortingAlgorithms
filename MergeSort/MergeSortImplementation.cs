@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CountingArray;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -44,6 +45,13 @@ namespace MergeSort
                 {
                     results.Add(Merge(lists[i - 1], lists[i]));
                 }
+
+                for (int i = results.Count * 2; i < lists.Length; i++) // Merge the odd list out
+                {
+                    var last = results.Last();
+                    results.RemoveAt(results.Count - 1);
+                    results.Add(Merge(last, lists[i]));
+                }
                 return Merge(results.ToArray());
             }
         }
@@ -59,6 +67,52 @@ namespace MergeSort
             int[] result = new int[firstList.Length + secondList.Length];
             int[] shortest = firstList.Length > secondList.Length ? secondList : firstList;
             int[] longest = firstList.Length > secondList.Length ? firstList : secondList;
+            int currentResultIndex = 0;
+            int shortI = 0;
+            int longI = 0;
+            while (currentResultIndex < result.Length)
+            {
+                while (shortI < shortest.Length && (longI >= longest.Length || shortest[shortI] < longest[longI]))
+                {
+                    result[currentResultIndex++] = shortest[shortI++];
+                }
+                while (longI < longest.Length && (shortI >= shortest.Length || longest[longI] < shortest[shortI]))
+                {
+                    result[currentResultIndex++] = longest[longI++];
+                }
+            }
+
+            //for (int i = 0; i < shortest.Length; i++)
+            //{
+            //    if (shortest[i] < longest[i])
+            //    {
+            //        result[currentResultIndex++] = shortest[i];
+            //        result[currentResultIndex++] = longest[i];
+            //    }
+            //    else
+            //    {
+            //        result[currentResultIndex++] = longest[i];
+            //        result[currentResultIndex++] = shortest[i];
+            //    }
+            //}
+            //for (int i = shortest.Length; i < longest.Length; i++)
+            //{
+            //    result[(shortest.Length * 2 + (i - shortest.Length))] = longest[i];
+            //}
+            return result;
+        }
+
+        /// <summary>
+        /// Merges and sorts the two lists into one result list.
+        /// </summary>
+        /// <param name="firstList">The first list that should be used.</param>
+        /// <param name="secondList">The second list that should be used.</param>
+        /// <returns>Returns a single list that contains all of the numbers that are sorted in ascending order.</returns>
+        private static CountingArray<int> Merge(CountingArray<int> firstList, CountingArray<int> secondList)
+        {
+            CountingArray<int> result = new CountingArray<int>(firstList.Length + secondList.Length);
+            CountingArray<int> shortest = firstList.Length > secondList.Length ? secondList : firstList;
+            CountingArray<int> longest = firstList.Length > secondList.Length ? firstList : secondList;
             for (int i = 0; i < shortest.Length; i += 2)
             {
                 if (shortest[i] < longest[i])

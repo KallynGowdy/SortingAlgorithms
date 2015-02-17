@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C8BE9A6A-B0EC-45EC-B978-EEEF9FF4C71A}</ProjectGuid>
+    <ProjectGuid>{71B232F1-2667-4965-9B18-67760D396A75}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>InsertionSort</RootNamespace>
-    <AssemblyName>InsertionSort</AssemblyName>
+    <RootNamespace>CountingArray</RootNamespace>
+    <AssemblyName>CountingArray</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,14 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InsertionSortImplementation.cs" />
+    <Compile Include="CountingArray.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CountingArray\CountingArray.csproj">
-      <Project>{71b232f1-2667-4965-9b18-67760d396a75}</Project>
-      <Name>CountingArray</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

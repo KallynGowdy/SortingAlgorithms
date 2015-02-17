@@ -13,6 +13,7 @@ using KalsTimer;
 using MergeSort;
 using CountingArray;
 using InsertionSort;
+using RadixSort;
 
 namespace BubbleSort
 {
@@ -31,13 +32,13 @@ namespace BubbleSort
         /// <summary>
         /// The number of rounds to run.
         /// </summary>
-        public const int Rounds = 4;
+        public const int Rounds = 5;
 
         static void Main(string[] args)
         {
             var algorithms = new[]
             {
-                new Tuple<string, Func<CountingArray<int>, CountingArray<int>>>("Bubble Sort", BubbleSortImplementation.BubbleSortWithSwapFlag),
+                new Tuple<string, Func<CountingArray<int>, CountingArray<int>>>("Radix Sort", RadixSortImplementation.SortByLeastSignificantDigitAndSwap),
                 new Tuple<string, Func<CountingArray<int>, CountingArray<int>>>("Insertion Sort", InsertionSortImplementation.InsertionSortWithSwap)
             };
 
@@ -46,6 +47,16 @@ namespace BubbleSort
             CompareAlgorithms(algorithms);
 
             Console.WriteLine();
+
+            Console.WriteLine("Kal's Timer: ");
+
+            var a = new[]
+            {
+                new Tuple<string, Func<int[], int[]>>("Radix Sort", RadixSortImplementation.SortByLeastSignificantDigitAndSwap),
+                new Tuple<string, Func<int[], int[]>>("Insertion Sort", InsertionSortImplementation.InsertionSortWithSwap)
+            };
+
+            CompareAlgorithms<KalTimer>(a);
 
             Console.WriteLine("Press Any Key To Quit...");
             Console.Read();
@@ -62,7 +73,7 @@ namespace BubbleSort
                 for (int c = 0; c < times.Length; c++)
                 {
 
-                    string labelFormat = string.Format("{0} Swaps - {1} Compares |",  times[c].Item2[i].Item1, times[c].Item2[i].Item2);
+                    string labelFormat = string.Format("{0} Swaps - {1} Compares |", times[c].Item2[i].Item1, times[c].Item2[i].Item2);
                     Console.Write("{0, 40}", labelFormat);
                 }
                 Console.WriteLine();
@@ -127,7 +138,7 @@ namespace BubbleSort
         static Tuple<long, long>[] TestAlgorithm(string name, Func<CountingArray<int>, CountingArray<int>> sortAlgorithm, bool printProgress = true)
         {
             int currentAmount = StartingAmountOfNumbers;
-            Tuple<long, long>[] linqTimes = new Tuple<long,long>[Rounds];
+            Tuple<long, long>[] linqTimes = new Tuple<long, long>[Rounds];
             for (int c = 0; c < Rounds; c++)
             {
                 int[] numbers = new int[currentAmount];

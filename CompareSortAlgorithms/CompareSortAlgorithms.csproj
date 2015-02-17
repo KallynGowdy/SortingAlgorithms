@@ -68,6 +68,10 @@
       <Project>{e060c603-f008-4c6d-85e2-89022a4bad48}</Project>
       <Name>MergeSort</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RadixSort\RadixSort.csproj">
+      <Project>{3a2d97ad-cc57-4ec2-b98b-406805c1f038}</Project>
+      <Name>RadixSort</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SelectionSort\SelectionSort.csproj">
       <Project>{14D18D09-3B7F-4C09-9073-92A3292A599C}</Project>
       <Name>SelectionSort</Name>

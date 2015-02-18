@@ -46,11 +46,11 @@ namespace MergeSort
                     results.Add(Merge(lists[i - 1], lists[i]));
                 }
 
-                for (int i = results.Count * 2; i < lists.Length; i++) // Merge the odd list out
+                if (lists.Length % 2 != 0) // Merge the odd list out
                 {
                     var last = results.Last();
                     results.RemoveAt(results.Count - 1);
-                    results.Add(Merge(last, lists[i]));
+                    results.Add(Merge(last, lists[lists.Length - 1]));
                 }
                 return Merge(results.ToArray());
             }
@@ -72,11 +72,18 @@ namespace MergeSort
             int longI = 0;
             while (currentResultIndex < result.Length)
             {
-                while (shortI < shortest.Length && (longI >= longest.Length || shortest[shortI] < longest[longI]))
+                if (shortI < shortest.Length)
                 {
-                    result[currentResultIndex++] = shortest[shortI++];
+                    if (longI >= longest.Length || shortest[shortI] < longest[longI])
+                    {
+                        result[currentResultIndex++] = shortest[shortI++];
+                    }
+                    else
+                    {
+                        result[currentResultIndex++] = longest[longI++];
+                    }
                 }
-                while (longI < longest.Length && (shortI >= shortest.Length || longest[longI] < shortest[shortI]))
+                else
                 {
                     result[currentResultIndex++] = longest[longI++];
                 }
@@ -225,7 +232,7 @@ namespace MergeSort
 
             while (highp <= ubound)
             {
-                outputArray[j] = outputArray[highp];
+                tempArray[j] = outputArray[highp];
                 j++;
                 highp++;
             }

@@ -16,8 +16,11 @@ namespace RadixSort
         /// <summary>
         /// Sorts the given array of numbers into a new array using the Radix/Bin/Bucket sorting algorithm by the Least Significant Digit.
         /// 
+        /// Note that for negative numbers to work we need to make another pass after we've sorted the numbers to filter out and reverse the negatives.
+        /// 
         /// This version sorts the numbers by putting the numbers into a seperate array that does not get affected by the transactions
-        /// and uses the output array for each of the encountered numbers. Could possibly be sped up by swapping instead of inserting items.
+        /// and uses the output array for each of the encountered numbers.
+        /// Could potentially be sped up by converting the numbers to strings and comparing their characters instead of dividing them and performing modulus operations.
         /// </summary>
         /// <param name="numbers">The numbers that should be sorted.</param>
         /// <returns></returns>
@@ -31,9 +34,10 @@ namespace RadixSort
             do
             {
                 int[] currentNumbers = new int[output.Length];
-                int currentPlace = 0;
                 output.CopyTo(currentNumbers, 0);
+                int currentPlace = 0;
                 hadDigit = false;
+
                 for (int c = 0; c < 10; c++)
                 {
                     for (int i = 0; i < currentNumbers.Length; i++)
@@ -44,41 +48,13 @@ namespace RadixSort
                         if (v % 10 == c)
                         {
                             output[currentPlace++] = n;
-                            if (v > 0)
+                            if (v != 0)
                                 hadDigit = true;
                         }
-                    }
-                }
-                digit++;
-            } while (hadDigit);
-
-            return output;
-        }
-
-        public static int[] SortByLeastSignificantDigitAndSwap(int[] numbers)
-        {
-            int[] output = new int[numbers.Length];
-            numbers.CopyTo(output, 0);
-
-            int digit = 0;
-            bool hadDigit = false;
-            do
-            {
-                int currentPlace = 0;
-                hadDigit = false;
-                for (int c = 0; c < 10; c++)
-                {
-                    for (int i = 0; i < output.Length; i++)
-                    {
-                        int n = output[i];
-                        int d = (int)Math.Pow(10, digit);
-                        int v = (n / d);
-                        if (v % 10 == c)
+                        else if (v % 10 == -c)
                         {
-                            int temp = output[currentPlace]; // Swap numbers
                             output[currentPlace++] = n;
-                            output[i] = temp;
-                            if (v > 0)
+                            if (v != 0)
                                 hadDigit = true;
                         }
                     }
@@ -86,36 +62,18 @@ namespace RadixSort
                 digit++;
             } while (hadDigit);
 
-            return output;
-        }
+            Stack<int> negatives = new Stack<int>(output.Length);
 
-        public static CountingArray<int> SortByLeastSignificantDigitAndSwap(CountingArray<int> numbers)
-        {
-            int digit = 0;
-            bool hadDigit = false;
-            do
+            for (int i = 0; i < output.Length; i++)
             {
-                int currentPlace = 0;
-                hadDigit = false;
-                for (int c = 0; c < 10; c++)
+                int n = output[i];
+                if (n < 0)
                 {
-                    for (int i = 0; i < numbers.Length; i++)
-                    {
-                        int n = numbers[i];
-                        int d = (int)Math.Pow(10, digit);
-                        int v = (n / d);
-                        if (v % 10 == c)
-                        {
-                            numbers.Swap(currentPlace++, i);
-                            if (v > 0)
-                                hadDigit = true;
-                        }
-                    }
+                    negatives.Push(n);
                 }
-                digit++;
-            } while (hadDigit);
+            }
 
-            return numbers;
+            return negatives.Concat(output.Where(n => n >= 0)).ToArray();
         }
     }
 }

@@ -36,27 +36,22 @@ namespace BubbleSort
 
         static void Main(string[] args)
         {
-            var algorithms = new[]
-            {
-                new Tuple<string, Func<CountingArray<int>, CountingArray<int>>>("Radix Sort", RadixSortImplementation.SortByLeastSignificantDigitAndSwap),
-                new Tuple<string, Func<CountingArray<int>, CountingArray<int>>>("Insertion Sort", InsertionSortImplementation.InsertionSortWithSwap)
-            };
-
-            Console.WriteLine("Transaction Counter: ");
-
-            CompareAlgorithms(algorithms);
-
-            Console.WriteLine();
-
-            Console.WriteLine("Kal's Timer: ");
-
             var a = new[]
             {
-                new Tuple<string, Func<int[], int[]>>("Radix Sort", RadixSortImplementation.SortByLeastSignificantDigitAndSwap),
-                new Tuple<string, Func<int[], int[]>>("Insertion Sort", InsertionSortImplementation.InsertionSortWithSwap)
+                new Tuple<string, Func<int[], int[]>>("Radix Sort", RadixSortImplementation.SortByLeastSignificantDigit),
+                new Tuple<string, Func<int[], int[]>>("Insertion Sort", InsertionSortImplementation.InsertionSortWithSwap),
+				new Tuple<string, Func<int[], int[]>>("Merge Sort /WO Recursion", MergeSortImplementation.SortUsingLoops),
+				new Tuple<string, Func<int[], int[]>>("Merge Sort /W Recursion", MergeSortImplementation.SortUsingRecursion)
             };
 
+            Console.WriteLine("Kal's Timer: ");
+			
             CompareAlgorithms<KalTimer>(a);
+
+			Console.WriteLine();
+			Console.WriteLine("System Timer: ");
+
+            CompareAlgorithms<SystemTimer>(a);
 
             Console.WriteLine("Press Any Key To Quit...");
             Console.Read();

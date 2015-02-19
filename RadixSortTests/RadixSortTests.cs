@@ -11,5 +11,11 @@ namespace RadixSortTests
         {
             Assert.IsTrue(TestHelpers.TestHelpers.TestAlgorithm(RadixSort.RadixSortImplementation.SortByLeastSignificantDigit, 10000));
         }
+
+        [TestMethod]
+        public void TestRadixSortByMostSignificantDigit()
+        {
+            Assert.IsTrue(TestHelpers.TestHelpers.TestAlgorithm(RadixSort.RadixSortImplementation.SortByLeastSignificantDigitByChar, 100));
+        }
     }
 }

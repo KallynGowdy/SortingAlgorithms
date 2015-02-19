@@ -23,6 +23,16 @@ namespace CountingArray
         /// </summary>
         public long Compares { get; private set; }
 
+        /// <summary>
+        /// Gets the number of times that the internal array has been accessed through the indexer.
+        /// </summary>
+        public long Retrievals { get; private set; }
+
+        /// <summary>
+        /// Gets the number of times that a value has been set in the internal array through the indexer.
+        /// </summary>
+        public long Sets { get; private set; }
+
         public CountingArray(int size)
         {
             items = new T[size];
@@ -43,10 +53,12 @@ namespace CountingArray
         {
             get
             {
+                Retrievals++;
                 return items[index];
             }
             set
             {
+                Sets++;
                 items[index] = value;
             }
         }

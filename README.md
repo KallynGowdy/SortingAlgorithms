@@ -1,3 +1,10 @@
+# Sorting Algorithms
+By Kallyn Gowdy
+
+This project contains many different sorting algorithms. Usually there are at least 2 different variants on an algorithm to prove just how many there are and how they could be implemented simply. Each algorithm has two different projects. One implementation project and one test project. There is also a console application which runs comparisons on each of the specified sorting algorithms to show the relative speed difference.
+
+Below are a couple pseudocode implementations.
+
 ## Kallyn Gowdy - Bubble Sort - 2015
 
 

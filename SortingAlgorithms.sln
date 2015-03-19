@@ -31,6 +31,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadixSort", "RadixSort\Radi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadixSort.Tests", "RadixSortTests\RadixSort.Tests.csproj", "{1DDD643B-07EF-49F8-BB1C-C444DD437AF9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShellSort", "ShellSort\ShellSort.csproj", "{AC35A8C7-A067-482E-A057-4F2790AC3127}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShellSort.Tests", "ShellSort.Tests\ShellSort.Tests.csproj", "{E7173445-EF2C-4809-8270-BAFE374A1511}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +97,14 @@ Global
 		{1DDD643B-07EF-49F8-BB1C-C444DD437AF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DDD643B-07EF-49F8-BB1C-C444DD437AF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DDD643B-07EF-49F8-BB1C-C444DD437AF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC35A8C7-A067-482E-A057-4F2790AC3127}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC35A8C7-A067-482E-A057-4F2790AC3127}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC35A8C7-A067-482E-A057-4F2790AC3127}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC35A8C7-A067-482E-A057-4F2790AC3127}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7173445-EF2C-4809-8270-BAFE374A1511}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7173445-EF2C-4809-8270-BAFE374A1511}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7173445-EF2C-4809-8270-BAFE374A1511}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7173445-EF2C-4809-8270-BAFE374A1511}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

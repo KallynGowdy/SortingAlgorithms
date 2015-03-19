@@ -14,6 +14,7 @@ using MergeSort;
 using CountingArray;
 using InsertionSort;
 using RadixSort;
+using ShellSort;
 
 namespace BubbleSort
 {
@@ -41,9 +42,10 @@ namespace BubbleSort
 
 			CompareAlgorithms<SystemTimer>
 			(
-				RadixSortImplementation.SortLsdFirstTryCounting,
-				RadixSortImplementation.SortLsdByCharCounting,
-				RadixSortImplementation.SortLsdBase2Counting
+                //RadixSortImplementation.SortLsdFirstTryCounting,
+                //RadixSortImplementation.SortLsdByCharCounting,
+                //RadixSortImplementation.SortLsdBase2Counting,
+                ShellSortImplementation.SortWithSortingResult
             );
 
 			Console.WriteLine("Press Any Key To Quit...");

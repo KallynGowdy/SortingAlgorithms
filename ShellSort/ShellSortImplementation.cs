@@ -60,9 +60,12 @@ namespace ShellSort
         }
 
         /// <summary>
+        /// Sorts the given list of items using the shell sort algorithm and returns a <see cref="SortingResult"/> with the items and statistics.
         /// 
+        /// This might be improved in a couple ways, although I would like to use the profiler to get a couple leads on how.
         /// </summary>
-        /// <param name="items"></param>
+        /// <typeparam name="T">The type of the items that are going to be sorted.</typeparam>
+        /// <param name="items">The items that should be sorted.</param>
         /// <returns></returns>
         public static SortingResult SortWithSortingResult(int[] items)
         {
@@ -76,9 +79,14 @@ namespace ShellSort
             int compares = 0;
             int retrievals = 0;
 
-            for (int distance = items.Length / 2; distance > 0; distance /= 2)
+            int increment = 0;
+            while (increment <= items.Length / 3)
             {
-                distance /= 2;
+                increment = increment * 3 + 1;
+            }
+
+            for (int distance = increment; distance > 0; distance = (distance - 1) / 3)
+            {
                 for (int i = distance; i < items.Length; i++)
                 {
                     int index = i;

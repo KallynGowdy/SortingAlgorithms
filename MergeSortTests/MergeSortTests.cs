@@ -29,7 +29,7 @@ namespace MergeSortTests
         [TestMethod]
         public void TestLinqOrderBy()
         {
-			Assert.IsTrue(TestHelpers.TestHelpers.TestAlgorithm(n => n.OrderBy(v => v).ToArray(), 100000));
+            Assert.IsTrue(TestHelpers.TestHelpers.TestAlgorithm(n => n.OrderBy(v => v).ToArray(), 100000));
         }
 
     }

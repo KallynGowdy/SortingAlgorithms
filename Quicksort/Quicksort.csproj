@@ -42,6 +42,12 @@
     <Compile Include="QuickSortImplementation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CountingArray\CountingArray.csproj">
+      <Project>{71B232F1-2667-4965-9B18-67760D396A75}</Project>
+      <Name>CountingArray</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

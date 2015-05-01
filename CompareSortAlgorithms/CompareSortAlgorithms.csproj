@@ -69,6 +69,14 @@
       <Project>{e060c603-f008-4c6d-85e2-89022a4bad48}</Project>
       <Name>MergeSort</Name>
     </ProjectReference>
+    <ProjectReference Include="..\QuickSort.Tests\QuickSort.Tests.csproj">
+      <Project>{6c955b37-4eca-48f3-97dc-5d3c6eec459a}</Project>
+      <Name>QuickSort.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Quicksort\Quicksort.csproj">
+      <Project>{022fa2b0-1d94-48a4-85b1-bb34a8cce8fa}</Project>
+      <Name>Quicksort</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RadixSort\RadixSort.csproj">
       <Project>{3a2d97ad-cc57-4ec2-b98b-406805c1f038}</Project>
       <Name>RadixSort</Name>

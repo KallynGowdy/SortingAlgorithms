@@ -133,6 +133,7 @@ namespace CountingArray
 	/// <summary>
 	/// Defines a class that represents an array that counts different transactions.
 	/// </summary>
+	[Obsolete("Use SortingResult now.")]
 	public class CountingArray<T> : IEnumerable<T>
 	{
 		T[] items;

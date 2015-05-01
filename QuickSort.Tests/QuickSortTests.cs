@@ -9,7 +9,13 @@ namespace QuickSort.Tests
         [TestMethod]
         public void TestQuickSort()
         {
-            Assert.IsTrue(TestHelpers.TestHelpers.TestAlgorithm(items => Quicksort.QuickSortImplementation.Sort(items), 100000));
+            Assert.IsTrue(TestHelpers.TestHelpers.TestAlgorithm(items => Quicksort.QuickSortImplementation.Sort(items), 1000000));
+        }
+
+        [TestMethod]
+        public void TestQuickSortSortingResult()
+        {
+            Assert.IsTrue(TestHelpers.TestHelpers.TestAlgorithm(items => Quicksort.QuickSortImplementation.SortWithSortingResult(items).SortedItems, 1000000));
         }
     }
 }

@@ -145,25 +145,41 @@ namespace SelectionSort
         /// <param name="numbers">The numbers that should be sorted.</param>
         /// <param name="createNewArray">Whether a new array should be created for the output or if the given input array should be manipulated instead.</param>
         /// <returns>Returns list containing the sorted numbers.</returns>
-        public static CountingArray<int> SelectionSortBySwap(CountingArray<int> numbers)
+        public static SortingResult SelectionSortBySwapWithSortingResult(int[] numbers)
         {
             if (numbers == null) throw new ArgumentNullException("numbers");
 
-            for (int i = 0; i < numbers.Length; i++)
+            int[] output = new int[numbers.Length];
+            numbers.CopyTo(output, 0);
+
+            long swaps = 0;
+            long compares = 0;
+
+            for (int i = 0; i < output.Length; i++)
             {
                 int lowest = i;
-                for (int c = i + 1; c < numbers.Length; c++)
+                for (int c = i + 1; c < output.Length; c++)
                 {
-                    if (numbers.Compare(lowest, c, (f,s) => f > s))
+                    if (output[lowest] > output[c])
                     {
                         lowest = c;
                     }
+                    compares++;
                 }
 
-                numbers.Swap(lowest, i);
+                int num = output[i];
+                output[i] = output[lowest];
+                output[lowest] = num;
+                swaps++;
             }
 
-            return numbers;
+            return new SortingResult()
+            {
+                AlgorithmName = "Selection Sort",
+                Compares = compares,
+                Swaps = swaps,
+                SortedItems = output
+            };
         }
     }
 }

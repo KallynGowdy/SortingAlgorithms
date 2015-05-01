@@ -29,7 +29,7 @@ namespace SelectionSortTests
         [TestMethod]
         public void TestSelectionSortBySwapAndCount()
         {
-            Assert.IsTrue(TestHelpers.TestHelpers.TestAlgorithmWithCounting(SelectionSortImplementation.SelectionSortBySwap, 10000));
+            Assert.IsTrue(TestHelpers.TestHelpers.TestAlgorithm(n => SelectionSortImplementation.SelectionSortBySwapWithSortingResult(n).SortedItems, 10000));
         }
     }
 }

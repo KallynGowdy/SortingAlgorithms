@@ -21,6 +21,12 @@ namespace MergeSortTests
         }
 
         [TestMethod]
+        public void TestMergeSortWithoutRecursionSortingResult()
+        {
+            Assert.IsTrue(TestHelpers.TestHelpers.TestAlgorithm(n => MergeSortImplementation.SortUsingLoopsSortingResult(n).SortedItems, 100000));
+        }
+
+        [TestMethod]
         public void TestMergeSortUsingBook()
         {
 			Assert.IsTrue(TestHelpers.TestHelpers.TestAlgorithm(MergeSortImplementation.SortUsingBookMethod, 100000));

@@ -23,7 +23,7 @@ namespace BubbleSort.Tests
         [TestMethod]
         public void TestBubbleSortWithSwapAndCounting()
         {
-            Assert.IsTrue(TestHelpers.TestHelpers.TestAlgorithmWithCounting(BubbleSortImplementation.BubbleSortWithSwapFlag, 10000));
+            Assert.IsTrue(TestHelpers.TestHelpers.TestAlgorithm(n => BubbleSortImplementation.BubbleSortWithSwapFlagAndSortingResult(n).SortedItems, 10000));
         }
     }
 }

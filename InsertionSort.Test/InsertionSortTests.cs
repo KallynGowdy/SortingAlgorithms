@@ -15,7 +15,7 @@ namespace InsertionSort.Test
         [TestMethod]
         public void TestInsertionSortWithSwapAndCounter()
         {
-            Assert.IsTrue(TestHelpers.TestHelpers.TestAlgorithmWithCounting(InsertionSortImplementation.InsertionSortWithSwap, 10000));            
+            Assert.IsTrue(TestHelpers.TestHelpers.TestAlgorithm(n => InsertionSortImplementation.InsertionSortWithSwapSortingResult(n).SortedItems, 10000));            
         }
     }
 }

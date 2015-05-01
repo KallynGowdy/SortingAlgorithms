@@ -95,6 +95,7 @@ namespace ShellSort
                         int first = output[index];
                         int second = output[index - distance];
                         retrievals += 2;
+                        compares++;
                         if (first < second)
                         {
                             output[index - distance] = first;
@@ -106,7 +107,6 @@ namespace ShellSort
                         {
                             break;
                         }
-                        compares++;
                     }
                 }
             }

@@ -54,6 +54,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CountingArray\CountingArray.csproj">
+      <Project>{71B232F1-2667-4965-9B18-67760D396A75}</Project>
+      <Name>CountingArray</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Quicksort\Quicksort.csproj">
       <Project>{022fa2b0-1d94-48a4-85b1-bb34a8cce8fa}</Project>
       <Name>Quicksort</Name>

@@ -48,26 +48,42 @@ namespace BubbleSort
             return output;
         }
 
-        public static CountingArray<int> BubbleSortWithSwapFlag(CountingArray<int> numbers)
+        public static SortingResult BubbleSortWithSwapFlagAndSortingResult(int[] numbers)
         {
             if (numbers == null) throw new ArgumentNullException("numbers");
+
+            int[] output = new int[numbers.Length];
+            numbers.CopyTo(output, 0);
+
+            long compares = 0;
+            long swaps = 0;
 
             bool swappedValue = false;
             do
             {
                 swappedValue = false;
-                for (int i = 0; i < numbers.Length - 1; i++)
+                for (int i = 0; i < output.Length - 1; i++)
                 {
-                    if (numbers.Compare(i, i + 1, (f, s) => f > s))
+                    compares++;
+                    int first = output[i];
+                    int second = output[i + 1];
+                    if (first > second)
                     {
-                        numbers.Swap(i, i + 1);
+                        output[i] = second;
+                        output[i + 1] = first;
                         swappedValue = true;
+                        swaps++;
                     }
                 }
-
             } while (swappedValue);
 
-            return numbers;
+            return new SortingResult()
+            {
+                AlgorithmName = "Bubble Sort",
+                Compares = compares,
+                Swaps = swaps,
+                SortedItems = output
+            };
         }
 
         /// <summary>
@@ -83,7 +99,7 @@ namespace BubbleSort
             if (numbers == null) throw new ArgumentNullException("numbers");
 
             int[] output = new int[numbers.Length];
-
+            
             numbers.CopyTo(output, 0);
 
             for (int i = 0; i < output.Length; i++)
